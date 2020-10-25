@@ -1,0 +1,32 @@
+/**
+ * https://leetcode-cn.com/problems/trapping-rain-water/submissions/
+ *
+ */
+class TrappingRainWater {
+    public int trap(int[] height) {
+        if(height ==null || height.length < 1){
+            return 0;
+        }
+
+        int temp[] = new int[height.length];
+        int max = 0;
+        for(int i=1;i<height.length;i++){
+            max = Math.max(max,height[i-1]);
+            temp[i] = max;
+        }
+
+        int water = 0;
+        max = 0;
+        for(int i=height.length-2;i>=0;i--){
+            max = Math.max(max,height[i+1]);
+
+            int cap = Math.min(max,temp[i]) - height[i];
+            if(cap>0)
+                water += cap;
+
+        }
+
+        return water;
+
+    }
+}
