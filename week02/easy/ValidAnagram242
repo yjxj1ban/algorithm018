@@ -1,0 +1,43 @@
+/**
+ * 将2个String 转换成 String[],
+ */
+
+public class  ValidAnagram242 {
+
+    public  boolean  anage(String s,String t){
+
+        if (s.length() != t.length()) {
+            return false;
+        }
+        Map<String,Integer> tempHash1 = new HashMap();
+        Map<String,Integer> hashmap2 = new HashMap<>();
+        //string如何变成list。char类型参与四则运算，需要做一下转换
+        char[] strToArray1 = s.toCharArray();
+        char[] strToArray2 = t.toCharArray();
+        for(char x:strToArray1){
+            tempHash1.put(String.valueOf(x),tempHash1.getOrDefault(String.valueOf(x),0)+1);
+        }
+        for(char y:strToArray2){
+            hashmap2.put(String.valueOf(y),hashmap2.getOrDefault(String.valueOf(y),0)+1);
+        }
+        return tempHash1.equals(hashmap2);
+    }
+
+    public  boolean betterAnage(String s,String t){
+        if(s.length() != t.length()){
+            return false;
+        }
+        int[] counter = new int[26];
+        for(int i= 0;i<s.length();i++){
+            counter[s.charAt(i)-'a'] ++;
+            counter[t.charAt(i)-'a']--;
+        }
+        for(int check : counter){
+            if(check!=0){
+                return false;
+            }
+        }
+        return true;
+    }
+
+}
