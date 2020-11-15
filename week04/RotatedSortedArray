@@ -1,0 +1,9 @@
+/**
+ * 5,搜索旋转数组：https://leetcode-cn.com/problems/search-in-rotated-sorted-array/
+ * */
+public class RotatedSortedArray{
+    public int search(int[] nums, int target) {
+
+    }
+
+}
